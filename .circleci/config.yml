@@ -23,7 +23,9 @@ jobs:
       - checkout
       - run:
           name: バイナリビルド
-          command: echo 'Jarなど「デプロイ出来るもの」を作成しました。'
+          command: |
+            mkdir -p ./build/libs
+            echo 'バイナリのつもり' > build/libs/tess-sample.jar
       - run:
           name: リポジトリデプロイ
           command: echo 'インハウスリポジトリやS3など「バイナリの置き場」に配置しました。'
@@ -39,8 +41,6 @@ workflows:
             branches:
               only: master
       - build_register:
-          requires:
-            - build
           filters:
             tags:
               only: /v.*/
