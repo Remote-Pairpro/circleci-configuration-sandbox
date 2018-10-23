@@ -17,6 +17,9 @@ jobs:
           name: デプロイ
           command: echo 'デプロイをしました。'
   build_register:
+    docker:
+      - image: circleci/openjdk:8-jdk
+    steps:
       - checkout
       - run:
           name: バイナリビルド
@@ -36,10 +39,10 @@ workflows:
             branches:
               only: master
       - build_register:
-        requires:
+          requires:
             - build
-        filters:
-          rags:
-            only: /v.*/
-          branches:
-            ignore: /.*/
+          filters:
+            rags:
+              only: /v.*/
+            branches:
+              ignore: /.*/
