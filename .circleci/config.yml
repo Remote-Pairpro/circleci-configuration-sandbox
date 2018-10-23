@@ -16,6 +16,14 @@ jobs:
       - deploy:
           name: デプロイ
           command: echo 'デプロイをしました。'
+  build_register:
+      - checkout
+      - run:
+          name: バイナリビルド
+          command: echo 'Jarなど「デプロイ出来るもの」を作成しました。'
+      - run:
+          name: リポジトリデプロイ
+          command: echo 'インハウスリポジトリやS3など「バイナリの置き場」に配置しました。'
 workflows:
   version: 2
   build_and_test:
@@ -27,3 +35,11 @@ workflows:
           filters:
             branches:
               only: master
+      - build_register:
+        requires:
+            - build
+        filters:
+          rags:
+            only: /v.*/
+          branches:
+            ignore: /.*/
