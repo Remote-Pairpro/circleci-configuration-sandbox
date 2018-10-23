@@ -42,7 +42,7 @@ workflows:
           requires:
             - build
           filters:
-            rags:
+            tags:
               only: /v.*/
             branches:
               ignore: /.*/
