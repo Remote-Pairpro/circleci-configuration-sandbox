@@ -23,7 +23,7 @@ jobs:
       - run:
           name: デプロイ成功通知
           command: |
-            ./.circleci/send_success_message_to_slack -v 'CircleCIデプロイが成功しました。' -t 'デプロイ成功通知'
+            ./.circleci/send_success_message_to_slack.sh -v 'CircleCIデプロイが成功しました。' -t 'デプロイ成功通知'
   build_register:
     docker:
       - image: circleci/openjdk:8-jdk
