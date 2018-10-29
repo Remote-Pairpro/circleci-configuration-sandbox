@@ -4,11 +4,11 @@ jobs:
     docker:
       - image: circleci/openjdk:8-jdk-node-browsers
     steps:
+      - checkout
       - run:
           name: 開始通知
           command: |
             ./.circleci/send_success_message_to_slack -v 'CircleCIでのビルドを開始します。' -t '開始通知'
-      - checkout
       - run:
           name: テスト＆ビルド
           command: echo 'テストとビルドをやりました。'
@@ -20,6 +20,10 @@ jobs:
       - deploy:
           name: デプロイ
           command: echo 'デプロイをしました。'
+      - run:
+          name: デプロイ成功通知
+          command: |
+            ./.circleci/send_success_message_to_slack -v 'CircleCIデプロイが成功しました。' -t 'デプロイ成功通知'
   build_register:
     docker:
       - image: circleci/openjdk:8-jdk
