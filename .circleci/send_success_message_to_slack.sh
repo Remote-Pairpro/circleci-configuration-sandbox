@@ -32,7 +32,7 @@ send_json=$(cat << EOS
         {
           "title": "${title}",
           "value": "${text}",
-          "short": true
+          "short": false
         }
       ]
     }

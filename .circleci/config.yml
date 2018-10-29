@@ -40,7 +40,7 @@ jobs:
       - run:
           name: Tagビルド&リポジトリ登録 成功通知
           command: |
-            git_url='https://github.com/Remote-Pairpro/circleci-configuration-sandbox'
+            git_url="https://github.com/${CIRCLE_PROJECT_USERNAME}/${CIRCLE_PROJECT_REPONAME}'
             ./.circleci/send_success_message_to_slack.sh -v "CircleCIデプロイが成功しました。\nTag: ${CIRCLE_TAG}\nSource:${git_url}/tree/${CIRCLE_TAG}\nLastCommit:${git_url}/commit/${CIRCLE_SHA1}" -t 'ビルド&リポジトリ登録 成功通知'
 workflows:
   version: 2
