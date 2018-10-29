@@ -7,7 +7,7 @@ jobs:
       - run:
           name: 開始通知
           command: |
-            curl -X POST ${SLACK_WEBHOOK_URL} -H 'content-type: application/json' -d '{"text": "CircleCIでのビルドを開始します。"}'
+            ./.circleci/send_success_message_to_slack -v 'CircleCIでのビルドを開始します。' -t '開始通知'
       - checkout
       - run:
           name: テスト＆ビルド
