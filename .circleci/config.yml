@@ -8,7 +8,7 @@ jobs:
       - run:
           name: 開始通知
           command: |
-            ./.circleci/send_success_message_to_slack -v 'CircleCIでのビルドを開始します。' -t '開始通知'
+            ./.circleci/send_success_message_to_slack.sh -v 'CircleCIでのビルドを開始します。' -t '開始通知'
       - run:
           name: テスト＆ビルド
           command: echo 'テストとビルドをやりました。'
