@@ -37,6 +37,10 @@ jobs:
       - run:
           name: リポジトリデプロイ
           command: echo 'インハウスリポジトリやS3など「バイナリの置き場」に配置しました。'
+      - run:
+          name: ビルド&リポジトリ登録 成功通知
+          command: |
+            ./.circleci/send_success_message_to_slack.sh -v "CircleCIデプロイが成功しました。Tag: ${CIRCLE_TAG}, SHA1:${64f976f7da2bdabacaa3caf73d73a7e4543faf42}" -t 'ビルド&リポジトリ登録 成功通知'
 workflows:
   version: 2
   build_and_test:
