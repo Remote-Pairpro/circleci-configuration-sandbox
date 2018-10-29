@@ -16,6 +16,7 @@ jobs:
       - deploy:
           name: デプロイ
           command: echo 'デプロイをしました。'
+      - message: "デプロイが完了しました。"
   build_register:
     docker:
       - image: circleci/openjdk:8-jdk
