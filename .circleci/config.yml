@@ -4,6 +4,9 @@ jobs:
     docker:
       - image: circleci/openjdk:8-jdk-node-browsers
     steps:
+      - run:
+          name: 開始通知
+          command: curl -X POST ${SLACK_WEBHOOK_URL} -H 'content-type: application/json' -d '{"text": "CircleCIでのビルドを開始します。"}'
       - checkout
       - run:
           name: テスト＆ビルド
@@ -16,7 +19,6 @@ jobs:
       - deploy:
           name: デプロイ
           command: echo 'デプロイをしました。'
-      - message: "デプロイが完了しました。"
   build_register:
     docker:
       - image: circleci/openjdk:8-jdk
